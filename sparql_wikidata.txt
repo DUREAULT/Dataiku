@@ -1,0 +1,43 @@
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+
+SELECT ?monument ?image ?localisation ?merimee ?adresse ?classe
+WHERE {
+  {{?monument wdt:P1435 wd:Q10387684} UNION {?monument wdt:1435 wd:Q10387575} UNION {?monument wdt:P1435 ?type. ?type wdt:P279* wd:Q916475}}
+?monument wdt:P18 ?image.
+?monument wdt:P625 ?localisation. 
+?monument wdt:P380 ?merimee.
+?monument wdt:P969 ?adresse.
+?monument wdt:P1435 ?classe.
+
+  
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "fr"}
+  }
+UNION {?monument wdt:P580 ?date_classement. ?date_classement wdt:P1435* wdt:P580}}
+
+SELECT DISTINCT ?monument ?monumentLabel ?image ?localisation ?merimee ?adresse ?classe ?classeLabel ?ville ?villeLabel ?date_creation ?date_classement ?site
+WHERE {
+  {{?monument wdt:P1435 wd:Q10387684} UNION {?monument wdt:1435 wd:Q10387575} UNION {?monument wdt:P1435 ?type. ?type wdt:P279* wd:Q916475}
+}
+?monument wdt:P18 ?image.
+?monument wdt:P625 ?localisation. 
+?monument wdt:P380 ?merimee.
+?monument wdt:P969 ?adresse.
+?monument wdt:P1435 ?classe.
+?monument wdt:P131 ?ville.
+OPTIONAL {{?monument wdt:P51435 ?date_classement. ?date_classement wdt:P580 wdt:Q24575110.}}
+OPTIONAL {{?monument wdt:P571 ?date_creation} }
+OPTIONAL {{?monument wdt:P856 ?site}}
+  
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "fr"}
+  }
