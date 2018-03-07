@@ -1,4 +1,6 @@
 
+1ère requête
+
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -22,7 +24,18 @@ WHERE {
   SERVICE wikibase:label {
     bd:serviceParam wikibase:language "fr"}
   }
-UNION {?monument wdt:P580 ?date_classement. ?date_classement wdt:P1435* wdt:P580}}
+——————————————————
+2nde requête
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
 
 SELECT DISTINCT ?monument ?monumentLabel ?image ?localisation ?merimee ?adresse ?classe ?classeLabel ?ville ?villeLabel ?date_creation ?date_classement ?site
 WHERE {
